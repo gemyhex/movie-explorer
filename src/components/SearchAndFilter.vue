@@ -55,6 +55,7 @@
 import {computed, ref, watch} from 'vue';
 import { useMoviesStore } from '../stores/movies';
 import {debounce} from "lodash";
+import DOMPurify from 'dompurify';
 
 const moviesStore = useMoviesStore();
 
@@ -77,7 +78,7 @@ const handleAllGenresToggle = (event) => {
 };
 
 const handleSearch = debounce(() => {
-  moviesStore.searchQuery = searchQuery.value;
+  moviesStore.searchQuery = DOMPurify.sanitize(searchQuery.value);
   moviesStore.fetchAutocompleteResults(searchQuery.value);
   moviesStore.fetchCombinedResults();
 }, 300);

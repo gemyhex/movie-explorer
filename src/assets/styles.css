@@ -131,3 +131,10 @@ body {
 .error-message button:hover {
     background-color: #0056b3;
 }
+.empty-state {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 20px;
+}

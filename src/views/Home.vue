@@ -9,15 +9,20 @@
 
     <SearchAndFilter />
 
-    <Loader v-if="moviesStore.loading"></Loader>
-
-    <div v-else class="movie-grid">
-      <MovieCard
-          v-for="movie in moviesStore.movies"
-          :key="movie.id"
-          :movie="movie"
-      />
+    <div v-if="!moviesStore.loading">
+      <div v-if="moviesStore.movies.length === 0" class="empty-state">
+        No movies found. Try a different search or filter.
+      </div>
+      <div class="movie-grid" v-else>
+        <MovieCard
+            v-for="movie in moviesStore.movies"
+            :key="movie.id"
+            :movie="movie"
+        />
+      </div>
     </div>
+
+    <Loader v-else></Loader>
   </div>
 </template>
 

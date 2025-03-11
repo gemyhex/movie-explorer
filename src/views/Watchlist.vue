@@ -5,7 +5,11 @@
       <button @click="watchlistStore.undoRemove">Undo Remove</button>
     </div>
 
-    <div class="movie-grid">
+    <div v-if="watchlistStore.watchlist.length === 0" class="empty-state">
+      Your watchlist is empty. Start adding movies from the <router-link to="/">Home</router-link> page!
+    </div>
+
+    <div class="movie-grid" v-else>
       <MovieCard
           v-for="movie in watchlistStore.watchlist"
           :key="movie.id"
