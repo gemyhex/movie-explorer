@@ -73,8 +73,4 @@ onMounted(() => {
   border-radius: 4px;
   cursor: pointer;
 }
-
-.undo-container button:hover {
-  background-color: #0056b3;
-}
 </style>
